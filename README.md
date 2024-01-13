@@ -27,6 +27,9 @@ The resulting `dosbox` binary file will be available in the root of the reposito
 
 Please check out the official [DOSBox Wiki](https://www.dosbox.com/wiki/) as well as the [KolibriOS Wiki](https://wiki.kolibrios.org/wiki/DosBox/)
 
+Example of launching the game __Warcraft: Orcs & Humans__:
+![Alt text](warcraft.jpeg)
+
 ## Known issues
 
 In the game __Master of Orion II__ strange mouse behavior may be a bug in the SDL port.
