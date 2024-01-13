@@ -1,4 +1,4 @@
-# DOSBox-0.74-3 port for KolibriOS
+# DOSBox 0.74-3 port for KolibriOS
 
 This repository contains a port of __DOSBox__ version __0.74-3__ for __KolibriOS__.\
 __DOSBox__ is a free and open-source emulator which runs software for __MS-DOS__ compatible disk operating systems—primarily video games. 
