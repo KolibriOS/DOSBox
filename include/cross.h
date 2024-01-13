@@ -62,7 +62,7 @@
 #endif
 
 //Solaris maybe others
-#if defined (DB_HAVE_NO_POWF)
+#if defined (DB_HAVE_NO_POWF) && !defined (KOLIBRI)
 #include <math.h>
 static inline float powf (float x, float y) { return (float) pow (x,y); }
 #endif

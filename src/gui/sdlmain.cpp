@@ -52,7 +52,10 @@
 #include "control.h"
 
 #define MAPPERFILE "mapper-" VERSION ".map"
-//#define DISABLE_JOYSTICK
+
+#ifdef KOLIBRI
+#define DISABLE_JOYSTICK
+#endif 
 
 #if C_OPENGL
 #include "SDL_opengl.h"
@@ -1756,7 +1759,12 @@ static void launcheditor() {
 	}*/
 	std::string edit;
 	while(control->cmdline->FindString("-editconf",edit,true)) //Loop until one succeeds
+#ifdef KOLIBRI
+		_ksys_exec(edit.c_str(), (char*)path.c_str(), false);
+		exit(0);
+#else
 		execlp(edit.c_str(),edit.c_str(),path.c_str(),(char*) 0);
+#endif
 	//if you get here the launching failed!
 	printf("can't find editor(s) specified at the command line.\n");
 	exit(1);
@@ -1781,8 +1789,12 @@ static void launchcaptures(std::string const& edit) {
 		printf("no editor specified.\n");
 		exit(1);
 	}*/
-
+#ifdef KOLIBRI
+	_ksys_exec(edit.c_str(), (char*)path.c_str(), false);
+	exit(0);
+#else
 	execlp(edit.c_str(),edit.c_str(),path.c_str(),(char*) 0);
+#endif
 	//if you get here the launching failed!
 	printf("can't find filemanager %s\n",edit.c_str());
 	exit(1);
@@ -1924,8 +1936,11 @@ int main(int argc, char* argv[]) {
 #endif
 	// Don't init timers, GetTicks seems to work fine and they can use a fair amount of power (Macs again) 
 	// Please report problems with audio and other things.
-	if ( SDL_Init( SDL_INIT_AUDIO|SDL_INIT_VIDEO | /*SDL_INIT_TIMER |*/ SDL_INIT_CDROM
-		|SDL_INIT_NOPARACHUTE
+	if ( SDL_Init( SDL_INIT_AUDIO|SDL_INIT_VIDEO | /*SDL_INIT_TIMER |*/
+#ifndef KOLIBRI
+		SDL_INIT_CDROM |
+#endif
+		SDL_INIT_NOPARACHUTE
 		) < 0 ) E_Exit("Can't init SDL %s",SDL_GetError());
 	sdl.inited = true;
 
@@ -2026,7 +2041,7 @@ int main(int argc, char* argv[]) {
 	}
 
 
-#if (ENVIRON_LINKED)
+#if (ENVIRON_LINKED) && !defined(KOLIBRI)
 		control->ParseEnv(environ);
 #endif
 //		UI_Init();

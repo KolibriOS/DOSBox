@@ -827,6 +827,10 @@ case $basic_machine in
 		basic_machine=i686-pc
 		os=-mingw32
 		;;
+	kolibri)
+		basic_machine=i686-pc
+		os=-kolibri
+		;;
 	mingw32ce)
 		basic_machine=arm-unknown
 		os=-mingw32ce
@@ -1409,7 +1413,7 @@ case $os in
 	      | -morphos* | -superux* | -rtmk* | -rtmk-nova* | -windiss* \
 	      | -powermax* | -dnix* | -nx6 | -nx7 | -sei* | -dragonfly* \
 	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es* \
-	      | -onefs* | -tirtos* | -phoenix* | -fuchsia*)
+	      | -onefs* | -tirtos* | -phoenix* | -fuchsia* | -kolibri*)
 	# Remember, each alternative MUST END IN *, to match a version number.
 		;;
 	-qnx*)

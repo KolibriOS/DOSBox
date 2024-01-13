@@ -90,6 +90,9 @@ void Cross::CreatePlatformConfigDir(std::string& in) {
 	in = "~/Library/Preferences/";
 	ResolveHomedir(in);
 	//Don't create it. Assume it exists
+#elif defined(KOLIBRI)
+	in = "/tmp0/1/.dosbox";
+	mkdir(in.c_str(),0700);
 #else
 	in = "~/.dosbox";
 	ResolveHomedir(in);
