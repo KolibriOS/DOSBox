@@ -32,7 +32,7 @@ Example of launching the game __Warcraft: Orcs & Humans__:
 
 ## Known issues
 
-In the game __Master of Orion II__ strange mouse behavior may be a bug in the SDL port.
+Not yet). But if you have any problems, create an issue on this page, forum or Telegram KolibriOS chat.
 
 ## Authors
 
